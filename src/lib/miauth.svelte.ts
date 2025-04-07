@@ -11,7 +11,7 @@ export class MiAuth {
   readonly isTokenReady = $derived(this.sessionId != null);
   getUrl(): string {
     this.sessionId = uuid();
-    return `${PUBLIC_SERVER_URL}/miauth/${this.sessionId}?name=emoji-request-app&permission=read:account`;
+    return `${PUBLIC_SERVER_URL}/miauth/${this.sessionId}?name=gekierotl&permission=read:account`;
   }
   async requestToken(): Promise<void> {
     if (this.sessionId == null) throw new Error("token is not ready");
