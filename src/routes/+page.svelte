@@ -120,11 +120,12 @@
 			{/if}
 		{/each}
 	</div>
-{/if}
-
+	
 <button class="btn btn-block btn-xl my-16" onclick={() => getNotes(timeline, $notes[$notes.length - 1].id, withRenotes)}>
 	さらに読み込む
 </button>
+{/if}
+
 
 <style>
 	.outer {
