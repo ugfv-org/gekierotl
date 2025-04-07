@@ -59,8 +59,8 @@
 	</a>
 {:else}
 	<div class="card w-full border-b-2 bg-transparent">
-		<div class="card-body flex flex-row items-baseline justify-between gap-16">
-			<h1 class="text-4xl font-bold text-white tracking-widest">GEKIEROTL</h1>
+		<div class="card-body flex flex-row items-baseline justify-between gap-2 md:gap-16">
+			<h1 class="text-sm md:text-4xl font-bold text-white tracking-widest">GEKIEROTL</h1>
 			<fieldset class="fieldset min-w-40">
 				<legend class="fieldset-legend">タイムライン</legend>
 				<select class="select" bind:value={timeline}>
@@ -75,7 +75,7 @@
 				<input type="checkbox" class="toggle bg-base-100" bind:checked={withRenotes} />
 			</label> -->
 			<button
-				class="btn btn-xl btn-secondary"
+				class="btn md:btn-xl btn-secondary"
 				onclick={() => {
 					notes.set([]);
 					getNotes(timeline, undefined, withRenotes);
