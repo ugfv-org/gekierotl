@@ -60,7 +60,7 @@
 {:else}
 	<div class="card w-full border-b-2 bg-transparent">
 		<div class="card-body flex flex-row items-baseline justify-between gap-2 md:gap-16">
-			<h1 class="text-sm md:text-4xl font-bold text-white tracking-widest">GEKIEROTL</h1>
+			<h1 class="text-sm font-bold tracking-widest text-white md:text-4xl">GEKIEROTL</h1>
 			<fieldset class="fieldset min-w-40">
 				<legend class="fieldset-legend">タイムライン</legend>
 				<select class="select" bind:value={timeline}>
@@ -86,7 +86,7 @@
 		</div>
 	</div>
 
-	<div class="columns-2 gap-8 md:columns-3 lg:columns-4 mt-8 px-2">
+	<div class="mt-8 columns-2 gap-8 px-2 md:columns-3 lg:columns-4">
 		{#each $notes as note}
 			{#if note.files![0].type.match(/image\//)}
 				<!-- svelte-ignore a11y_consider_explicit_label -->
@@ -120,12 +120,16 @@
 			{/if}
 		{/each}
 	</div>
-	
-<button class="btn btn-block btn-xl my-16" onclick={() => getNotes(timeline, $notes[$notes.length - 1].id, withRenotes)}>
-	さらに読み込む
-</button>
-{/if}
 
+	{#if $notes.length > 0}
+		<button
+			class="btn btn-block btn-xl my-16"
+			onclick={() => getNotes(timeline, $notes[$notes.length - 1].id, withRenotes)}
+		>
+			さらに読み込む
+		</button>
+	{/if}
+{/if}
 
 <style>
 	.outer {
