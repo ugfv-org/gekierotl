@@ -88,35 +88,37 @@
 
 	<div class="mt-8 columns-2 gap-8 px-2 md:columns-3 lg:columns-4">
 		{#each $notes as note}
-			{#if note.files![0].type.match(/image\//)}
-				<!-- svelte-ignore a11y_consider_explicit_label -->
-				<a
-					href={note.url ? note.url : `${PUBLIC_SERVER_URL}/notes/${note.id}`}
-					target="_blank"
-					class="before:bg-opacity-20 group relative before:absolute before:inset-0 before:rounded-md before:content-['']"
-				>
-					<img
-						class="my-8 w-full rounded-md shadow-sm transition-all duration-300 group-hover:shadow-2xl"
-						src={note.files![0].url}
-						alt="note"
-					/>
-					<div
-						class="test__body absolute inset-0 flex p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+			{#if note.files!.length >= 1}
+				{#if note.files![0].type.match(/image\//)}
+					<!-- svelte-ignore a11y_consider_explicit_label -->
+					<a
+						href={note.url ? note.url : `${PUBLIC_SERVER_URL}/notes/${note.id}`}
+						target="_blank"
+						class="before:bg-opacity-20 group relative before:absolute before:inset-0 before:rounded-md before:content-['']"
 					>
-						<div class="mt-auto">
-							<div class="avatar">
-								<div class="w-10 rounded-full">
-									<img src={note.user.avatarUrl} alt="user icon" />
+						<img
+							class="my-8 w-full rounded-md shadow-sm transition-all duration-300 group-hover:shadow-2xl"
+							src={note.files![0].url}
+							alt="note"
+						/>
+						<div
+							class="test__body absolute inset-0 flex p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+						>
+							<div class="mt-auto">
+								<div class="avatar">
+									<div class="w-10 rounded-full">
+										<img src={note.user.avatarUrl} alt="user icon" />
+									</div>
 								</div>
+								{#if note.files!.length > 1}
+									<div class="badge badge-secondary absolute top-0 right-0 m-2 shadow-md">
+										More {note.files!.length - 1} File
+									</div>
+								{/if}
 							</div>
-							{#if note.files!.length > 1}
-								<div class="badge badge-secondary absolute top-0 right-0 m-2 shadow-md">
-									More {note.files!.length - 1} File
-								</div>
-							{/if}
 						</div>
-					</div>
-				</a>
+					</a>
+				{/if}
 			{/if}
 		{/each}
 	</div>
